@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hola Mundo</title>
+</head>
+<body>
+    <button id="holaMundoBtn">Mostrar Hola Mundo</button>
+    <p id="mensaje">Aquí aparecerá el mensaje.</p>
+
+    <script>
+        document.getElementById("holaMundoBtn").onclick = function() {
+            fetch('/hola/')
+                .then(response => response.text())
+                .then(data => document.getElementById("mensaje").innerText = data)
+                .catch(error => console.error('Error:', error));
+        };
+    </script>
+</body>
+</html>
