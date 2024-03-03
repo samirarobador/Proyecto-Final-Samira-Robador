@@ -6,5 +6,5 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('hola', views.hola_mundo,name="Funcion de saludo"),
+    path('hola/', views.hola_mundo,name="Funcion de saludo"),
 ]

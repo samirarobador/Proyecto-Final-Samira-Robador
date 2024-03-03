@@ -11,7 +11,7 @@
 
     <script>
         document.getElementById("holaMundoBtn").onclick = function() {
-            fetch('/hola/')
+            fetch('/hola')
                 .then(response => response.text())
                 .then(data => document.getElementById("mensaje").innerText = data)
                 .catch(error => console.error('Error:', error));
