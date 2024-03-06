@@ -42,3 +42,9 @@ def parametrosArticulares(request):
         return JsonResponse({'q1':q1, 'q2':q2, 'q3':q3, 'q4':q4},status = 200)
     except ValueError:
         return JsonResponse({'error':'Recuerde introducir los 3 valores necesarios'},status = 400)
+
+
+def mostrar_texto(request):
+    # Obtiene el texto de los parámetros de la URL, usa 'texto_default' si no se encuentra
+    texto = request.GET.get('texto', 'texto_default')
+    return JsonResponse({'texto': texto})

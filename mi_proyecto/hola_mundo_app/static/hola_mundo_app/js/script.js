@@ -1,8 +1,14 @@
 // static/hola_mundo_app/js/script.js
-let var1 = "valor1";
-let var2 = "valor2";
-let var3 = "valor3";
+function verificarCambio() {
+    fetch('/mostrar-texto/')
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById('texto-actualizado').innerText = data.texto;
+    })
+    .catch(error => console.log('Error:', error));
+}
 
+<<<<<<< HEAD
 let url = `http://localhost:8000/parametrosArticulares?px=${var1}&py=${var2}&pz=${var3}`;
 fetch(url)
         .then(response => {response.json();
@@ -33,6 +39,10 @@ fetch(url)
         .catch(error => {
             console.error("hola")
         });
+=======
+// Verifica si hay cambios cada 5 segundos
+setInterval(verificarCambio, 5000);
+>>>>>>> 9291187d1449b4d6b5af5bb350ed078156be59e3
 
 document.getElementById("parametrosBtn").onclick = function() {
     const num1 = document.getElementById("px").value;
