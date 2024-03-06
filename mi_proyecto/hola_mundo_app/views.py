@@ -30,7 +30,7 @@ def parametrosArticulares(request):
         px = float(request.GET.get('px',''))
         py = float(request.GET.get('py',''))
         pz = float(request.GET.get('pz','')) - L1
-        print("hola", px, py, pz)
+        #print("hola", px, py, pz)
         q1 = math.degrees(math.atan2(py, px))
         q3_radianes = math.pi - math.acos((pz*pz+(math.sqrt(px*px+py*py)-L4)**2-L2**2-L3**2)/(-2*L2*L3))
         q3 = math.degrees(q3_radianes)
@@ -38,7 +38,7 @@ def parametrosArticulares(request):
         q2 = math.degrees(q2_radianes)
         q4 = -(q3+q2)
 
-        print(q2_radianes,q3_radianes)
+        #print(q2_radianes,q3_radianes)
         return JsonResponse({'q1':q1, 'q2':q2, 'q3':q3, 'q4':q4},status = 200)
     except ValueError:
         return JsonResponse({'error':'Recuerde introducir los 3 valores necesarios'},status = 400)
