@@ -3,9 +3,10 @@ let var1 = "valor1";
 let var2 = "valor2";
 let var3 = "valor3";
 
-let url = "/parametrosArticulares/?px=${var1}&py=${var2}&pz=${var3}";
+let url = `http://localhost:8000/parametrosArticulares?px=${var1}&py=${var2}&pz=${var3}`;
 fetch(url)
-        .then(response => response.json())
+        .then(response => {response.json();
+        console.log("Por aqui");})
         .then(data => {
             console.log("Estoy");
             if(data.q1 !== undefined) {
@@ -29,7 +30,9 @@ fetch(url)
                 document.getElementById("labelq4").innerText = "Error: " + data.error;
             }
         })
-        .catch(error => console.error('Error:', error));
+        .catch(error => {
+            console.error("hola")
+        });
 
 document.getElementById("parametrosBtn").onclick = function() {
     const num1 = document.getElementById("px").value;
