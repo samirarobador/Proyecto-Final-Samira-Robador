@@ -88,7 +88,7 @@ document.getElementById("parametrosBtn").onclick = function() {
             } else {
                 document.getElementById("labelq4").innerText = "Error: " + data.error;
             }
-            console.log("Antes de llamar a mover robot");
+            console.log("Antes de llamar a mover robot parametros");
             moverRobot(data.q1, data.q2, data.q3, data.q4);
         })
         .catch(error => console.error('Error:', error));
@@ -111,9 +111,19 @@ function moverRobot(q1,q2,q3,q4){
         body: urlencoded,
         redirect:"follow"
     };
-    console.log("Antes de fetch");
-    fetch("http://192.168.0.176:80/todos",requestOption)
+    let IP = document.getElementById('mensaje');
+    let urlPegar = "http://"+IP+":80/todos";
+    console.log("Antes de fetch pepe");
+    console.log(urlPegar);
+    if(IP === "Dispositivo no Conectado"){
+        console.log("No se mueve");
+        document.getElementById("labelq1").innerText = "No se puede enviar al robot";
+    }else{
+        console.log("Entro a moverse");
+        console.log(urlPegar);
+    fetch(urlPegar,requestOption)
     .then(response=>response.text())
     .then(result => console.log(result))
     .catch(error => console.error(error));
+    }
 }
