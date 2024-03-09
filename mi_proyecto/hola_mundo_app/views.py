@@ -43,8 +43,12 @@ def parametrosArticulares(request):
     except ValueError:
         return JsonResponse({'error':'Recuerde introducir los 3 valores necesarios'},status = 400)
 
+ultimo_mensaje = "Dispositivo no conectado"
+def recibir_mensaje(request):
+    global ultimo_mensaje
+    mensaje = request.GET.get('mensaje',"Dispositivo no conectado")
+    ultimo_mensaje = mensaje
+    return JsonResponse({'status': 'Mensaje recibido'})
 
-def mostrar_texto(request):
-    # Obtiene el texto de los parámetros de la URL, usa 'texto_default' si no se encuentra
-    texto = request.GET.get('texto', 'texto_default')
-    return JsonResponse({'texto': texto})
+def obtener_mensaje(request):
+    return JsonResponse({'mensaje':ultimo_mensaje})

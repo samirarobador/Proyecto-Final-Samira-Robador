@@ -23,7 +23,7 @@ button {
 button:hover {
     background-color: #45a049;
 }
-#resultadoSuma, #respuestaSubir, #labelq1 , #labelq2 , #labelq3 , #labelq4 {
+#resultadoSuma, #respuestaSubir, #labelq1 , #labelq2 , #labelq3 , #labelq4 , #mensaje {
     margin-top: 20px;
     padding: 10px;
     background-color: #dff0d8;
