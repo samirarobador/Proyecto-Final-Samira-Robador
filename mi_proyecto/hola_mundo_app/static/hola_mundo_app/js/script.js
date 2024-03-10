@@ -160,3 +160,47 @@ function moverRobot(q1,q2,q3,q4){
     .catch(error => console.error(error));
     }
 }
+
+
+function crearTabla() {
+    var filas = document.getElementById('filas').value;
+    var columnas = document.getElementById('columnas').value;
+    var tablaDiv = document.getElementById('tabla');
+    var tabla = '<table>';
+
+    for (var i = 0; i < filas; i++) {
+        tabla += '<tr>';
+        for (var j = 0; j < columnas; j++) {
+            tabla += `<td id="celda-${i}-${j}" onclick="pintarCelda(this)"></td>`;
+        }
+        tabla += '</tr>';
+    }
+
+    tabla += '</table>';
+    tablaDiv.innerHTML = tabla;
+
+    document.getElementById('btnCeldasPintadas').style.display = 'inline';
+}
+
+function pintarCelda(celda) {
+    celda.classList.toggle('colored');
+}
+
+function mostrarCeldasPintadas() {
+    var celdas = document.querySelectorAll('td');
+    var celdasPintadasInfo = 'Celdas Pintadas: ';
+    var hayCeldasPintadas = false;
+
+    celdas.forEach(function(celda, index) {
+        if(celda.classList.contains('colored')) {
+            celdasPintadasInfo += celda.id + ' ';
+            hayCeldasPintadas = true;
+        }
+    });
+
+    if (!hayCeldasPintadas) {
+        celdasPintadasInfo += 'Ninguna';
+    }
+
+    document.getElementById('celdasPintadas').innerText = celdasPintadasInfo;
+}

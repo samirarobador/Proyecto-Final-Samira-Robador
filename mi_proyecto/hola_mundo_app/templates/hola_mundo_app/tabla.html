@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Tabla</title>
+    <link rel="stylesheet" href="{% static 'hola_mundo_app/css/estilo.css' %}">
+</head>
+<body>
+
+<input type="number" id="filas" placeholder="Filas">
+<input type="number" id="columnas" placeholder="Columnas">
+<button onclick="crearTabla()">Crear Tabla</button>
+<button id="btnCeldasPintadas" style="display:none;" onclick="mostrarCeldasPintadas()">Mostrar Celdas Pintadas</button>
+
+<div id="tabla"></div>
+<div id="celdasPintadas"></div>
+
+<script src="{% static 'hola_mundo_app/js/script.js' %}"></script>
+
+</body>
+</html>

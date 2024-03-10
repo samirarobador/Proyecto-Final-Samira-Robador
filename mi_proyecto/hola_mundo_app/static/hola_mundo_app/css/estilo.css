@@ -71,6 +71,20 @@ button:hover {
     flex: 1; /* Distribuye el espacio disponible por igual entre los inputs */
 }
 
+table, th, td {
+    border: 1px solid black;
+}
+td {
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    vertical-align: middle;
+}
+.colored {
+    background-color: yellow; /* Cambia este color al deseado */
+}
+
+
 
 /* estilo.css */
 @media (max-width: 768px) {
