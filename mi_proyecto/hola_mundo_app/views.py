@@ -27,10 +27,10 @@ def sumar(request):
     
 def parametrosArticulares(request):
     try:
-        L1 = 0.092
+        L1 = 0.095
         L2 = 0.12
-        L3 = 0.11
-        L4 = 0.05
+        L3 = 0.12
+        L4 = 0.075
         px = float(request.GET.get('px',''))
         py = float(request.GET.get('py',''))
         pz = float(request.GET.get('pz','')) - L1
