@@ -8,6 +8,10 @@ def index(request):
     print("Entre")
     return render(request, 'hola_mundo_app/index.html')
 
+def configurar(request):
+    print("Entre a Configurar")
+    return render(request, 'hola_mundo_app/configurar.html')
+
 def hola_mundo(request):
     return HttpResponse('Hola Mundo')
 

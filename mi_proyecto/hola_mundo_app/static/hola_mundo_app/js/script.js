@@ -64,7 +64,7 @@ document.getElementById("parametrosBtn").onclick = function() {
     const num2 = document.getElementById("py").value;
     const num3 = document.getElementById("pz").value;
     const url = `/parametrosArticulares/?px=${num1}&py=${num2}&pz=${num3}`;
-
+    console.log("Holaaaaaaas en mover");
     fetch(url)
         .then(response => response.json())
         .then(data => {
@@ -94,6 +94,39 @@ document.getElementById("parametrosBtn").onclick = function() {
         .catch(error => console.error('Error:', error));
 };
 
+document.getElementById("configBtn").onclick = function() {
+    const q1 = document.getElementById("q1").value;
+    const q2 = document.getElementById("q2").value;
+    const q3 = document.getElementById("q3").value;
+    const q4 = document.getElementById("q4").value;
+    console.log("Entre a Config");
+    
+    if(q1 !== undefined) {
+        document.getElementById("label2q1").innerText = "q1: " + q1;
+    } else {
+        document.getElementById("label2q1").innerText = "Se debe ingresar el parámetro q1";
+    }
+    if(q2 !== undefined) {
+        document.getElementById("label2q1").innerText = "q2: " + q2;
+    } else {
+        document.getElementById("label2q1").innerText = "Se debe ingresar el parámetro q2";
+    }
+    if(q3 !== undefined) {
+        document.getElementById("label2q1").innerText = "q3: " + q3;
+    } else {
+        document.getElementById("label2q1").innerText = "Se debe ingresar el parámetro q3";
+    }
+    if(q4 !== undefined) {
+        document.getElementById("label2q4").innerText = "q4: " + q4;
+        console.log("Antes de llamar a mover robot parametros");
+        moverRobot(q1, q2, q3, q4);
+    } else {
+        document.getElementById("label2q4").innerText = "Se debe ingresar el parámetro q4";
+    }
+
+        
+};
+
 function moverRobot(q1,q2,q3,q4){
     console.log("Moviendo el robot");
     const myHeader = new Headers();
@@ -111,7 +144,7 @@ function moverRobot(q1,q2,q3,q4){
         body: urlencoded,
         redirect:"follow"
     };
-    let IP = document.getElementById('mensaje');
+    let IP = document.getElementById('mensaje').innerText;
     let urlPegar = "http://"+IP+":80/todos";
     console.log("Antes de fetch pepe");
     console.log(urlPegar);

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% load static %}
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Configuración de Articulaciones</title>
+        <link rel="stylesheet" href="{% static 'hola_mundo_app/css/estilo.css' %}">
+    </head>
+<body>
+
+<!-- index.html -->
+<div class="container">
+    <div class="left">
+        <!-- Espacio para contenido adicional o vacío -->
+    </div>
+    <div class="center">
+        <div class="input-group">
+            <label for="q1">Q1</label>
+            <input type="number" id="q1" placeholder="Base">
+            
+            <label for="q2">Q2</label>
+            <input type="number" id="q2" placeholder="Brazo">
+        </div>
+            <div class="input-group">   
+            <label for="q3">Q3</label>
+            <input type="number" id="q3" placeholder="Antebrazo">
+
+            <label for="q4">Q4</label>
+            <input type="number" id="q4" placeholder="Muñeca">
+        </div>
+        
+        <div class="center">
+            <button id="configBtn">Mover Robot por parametros</button>
+        <p id="label2q1">q1</p>
+        <p id="label2q2">q2</p>
+        <p id="label2q3">q3</p>
+        <p id="label2q4">q4</p>
+    </div>
+        <script src="{% static 'hola_mundo_app/js/script.js' %}"></script>
+    </div>
+    <div class="right">
+        
+        <div class="center">
+        <p id="mensaje">Dispositivo no Conectado</p>
+        <!-- Espacio para contenido adicional o vacío -->
+    </div>
+    </div>
+</div>
+</body>
+</html>
+
+
