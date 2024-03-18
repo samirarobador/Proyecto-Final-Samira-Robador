@@ -1,21 +1,37 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <title>Tabla</title>
-    <link rel="stylesheet" href="{% static 'hola_mundo_app/css/estilo.css' %}">
+    <link rel="stylesheet" href="{% static 'hola_mundo_app/css/estiloTabla.css' %}">
 </head>
 <body>
-
+    <div class="container">
+        <div class="left">
+            <!-- Espacio para contenido adicional o vacío -->
+        </div>
+        <div class="center">
+            <div class="input-group">
 <input type="number" id="filas" placeholder="Filas">
 <input type="number" id="columnas" placeholder="Columnas">
+</div>
+<div>
 <button onclick="crearTabla()">Crear Tabla</button>
 <button id="btnCeldasPintadas" style="display:none;" onclick="mostrarCeldasPintadas()">Mostrar Celdas Pintadas</button>
-
-<div id="tabla"></div>
+</div>
+<div> 
+<div id="tabla">aqui tabla</div>
 <div id="celdasPintadas"></div>
+</div>
+</div>
+{% load static %}
+<script src="{% static 'hola_mundo_app/js/tabla.js' %}"></script>
 
-<script src="{% static 'hola_mundo_app/js/script.js' %}"></script>
-
+<div class="right">
+        
+    
+</div>
+</div>
 </body>
 </html>

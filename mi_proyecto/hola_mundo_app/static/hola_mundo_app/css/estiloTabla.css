@@ -1,3 +1,23 @@
+table {
+    border: 1px solid rgb(102, 204, 7);
+    border-radius: 4px;
+}
+
+th, td {
+    border: 1px solid rgb(119, 185, 56);
+    border-radius: 100px;
+    cursor: pointer;
+}
+td {
+    width:auto;
+    height: 60px;
+    text-align: center;
+    vertical-align: middle;
+}
+.colored {
+    background-color: rgba(65, 248, 90, 0.637); /* Cambia este color al deseado */
+}
+
 /* static/hola_mundo_app/css/estilo.css */
 body {
     font-family: Arial, sans-serif;

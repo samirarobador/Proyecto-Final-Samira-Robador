@@ -131,13 +131,14 @@ function moverRobot(q1,q2,q3,q4){
     console.log("Moviendo el robot");
     const myHeader = new Headers();
     myHeader.append("Content-Type","application/x-www-form-urlencoded");
-
+    console.log(q1);
     const urlencoded = new URLSearchParams();
     urlencoded.append("q1",String(q1).replace(/\./g,','));
     urlencoded.append("q2",String(q2).replace(/\./g,','));
     urlencoded.append("q3",String(q3).replace(/\./g,','));
     urlencoded.append("q4",String(q4).replace(/\./g,','));
-
+    console.log("q3: ");
+    console.log(String(q3).replace(/\./g,','));
     const requestOption = {
         method : "POST",
         headers:myHeader,
@@ -161,46 +162,3 @@ function moverRobot(q1,q2,q3,q4){
     }
 }
 
-
-function crearTabla() {
-    var filas = document.getElementById('filas').value;
-    var columnas = document.getElementById('columnas').value;
-    var tablaDiv = document.getElementById('tabla');
-    var tabla = '<table>';
-
-    for (var i = 0; i < filas; i++) {
-        tabla += '<tr>';
-        for (var j = 0; j < columnas; j++) {
-            tabla += `<td id="celda-${i}-${j}" onclick="pintarCelda(this)"></td>`;
-        }
-        tabla += '</tr>';
-    }
-
-    tabla += '</table>';
-    tablaDiv.innerHTML = tabla;
-
-    document.getElementById('btnCeldasPintadas').style.display = 'inline';
-}
-
-function pintarCelda(celda) {
-    celda.classList.toggle('colored');
-}
-
-function mostrarCeldasPintadas() {
-    var celdas = document.querySelectorAll('td');
-    var celdasPintadasInfo = 'Celdas Pintadas: ';
-    var hayCeldasPintadas = false;
-
-    celdas.forEach(function(celda, index) {
-        if(celda.classList.contains('colored')) {
-            celdasPintadasInfo += celda.id + ' ';
-            hayCeldasPintadas = true;
-        }
-    });
-
-    if (!hayCeldasPintadas) {
-        celdasPintadasInfo += 'Ninguna';
-    }
-
-    document.getElementById('celdasPintadas').innerText = celdasPintadasInfo;
-}
