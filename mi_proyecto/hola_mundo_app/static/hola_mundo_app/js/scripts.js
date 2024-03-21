@@ -94,6 +94,49 @@ document.getElementById("parametrosBtn").onclick = function() {
         .catch(error => console.error('Error:', error));
 };
 
+document.getElementById("btnBombaAgua").onclick = function() {
+    const num1 = document.getElementById("mililitros").value;
+    console.log("Activando Bomba");
+    if(num1 !== undefined) {
+        activarBombaDeAgua(num1);
+    } else {
+        document.getElementById("labelq1").innerText = "Error: No se cargo correctamente los mililitros";
+    }
+};
+
+function activarBombaDeAgua(ml){
+    console.log("Moviendo la bomba");
+    const myHeader = new Headers();
+    myHeader.append("Content-Type","application/x-www-form-urlencoded");
+    const tiempo = ml * 720.0 / 10.0;
+    const urlencoded = new URLSearchParams();
+    urlencoded.append("valor",String(tiempo));
+
+    console.log("Tiempo: ");
+    console.log(String(tiempo));
+    const requestOption = {
+        method : "POST",
+        headers:myHeader,
+        body: urlencoded,
+        redirect:"follow"
+    };
+    let IP = document.getElementById('mensaje').innerText;
+    let urlPegar = "http://"+IP+":80/bombaagua";
+    console.log("Antes de fetch de bomba");
+    console.log(urlPegar);
+    if(IP === "Dispositivo no Conectado"){
+        console.log("No se activa la bomba");
+        document.getElementById("labelq1").innerText = "No se puede enviar al robot";
+    }else{
+        console.log("Entro a la bomba");
+        console.log(urlPegar);
+    fetch(urlPegar,requestOption)
+    .then(response=>response.text())
+    .then(result => console.log(result))
+    .catch(error => console.error(error));
+    }
+}
+
 document.getElementById("configBtn").onclick = function() {
     const q1 = document.getElementById("q1").value;
     const q2 = document.getElementById("q2").value;
@@ -133,12 +176,13 @@ function moverRobot(q1,q2,q3,q4){
     myHeader.append("Content-Type","application/x-www-form-urlencoded");
     console.log(q1);
     const urlencoded = new URLSearchParams();
-    urlencoded.append("q1",String(q1).replace(/\./g,','));
-    urlencoded.append("q2",String(q2).replace(/\./g,','));
-    urlencoded.append("q3",String(q3).replace(/\./g,','));
-    urlencoded.append("q4",String(q4).replace(/\./g,','));
+    urlencoded.append("q1",String(q1));
+    urlencoded.append("q2",String(q2));
+    urlencoded.append("q3",String(q3));
+    urlencoded.append("q4",String(q4)); 
+
     console.log("q3: ");
-    console.log(String(q3).replace(/\./g,','));
+    console.log(String(q3));
     const requestOption = {
         method : "POST",
         headers:myHeader,

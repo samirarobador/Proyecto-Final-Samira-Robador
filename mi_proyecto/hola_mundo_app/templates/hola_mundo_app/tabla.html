@@ -10,6 +10,8 @@
     <div class="container">
         <div class="left">
             <!-- Espacio para contenido adicional o vacío -->
+            <label for="num5">Altura en Milimetros</label>
+        <input type="number" id="altura" placeholder="Altura">
         </div>
         <div class="center">
             <div class="input-group">
@@ -19,6 +21,7 @@
 <div>
 <button onclick="crearTabla()">Crear Tabla</button>
 <button id="btnCeldasPintadas" style="display:none;" onclick="mostrarCeldasPintadas()">Mostrar Celdas Pintadas</button>
+<button id="btnMoverRobot" style="display:none;" onclick="moverRobot()">Mover Robot</button>
 </div>
 <div> 
 <div id="tabla">aqui tabla</div>
@@ -29,8 +32,10 @@
 <script src="{% static 'hola_mundo_app/js/tabla.js' %}"></script>
 
 <div class="right">
-        
-    
+    <div class="center">
+        <p id="mensaje">Dispositivo no Conectado</p>
+        <label for="num4">Mililitros</label>
+        <input type="number" id="mililitros" placeholder="Mililitros">
 </div>
 </div>
 </body>

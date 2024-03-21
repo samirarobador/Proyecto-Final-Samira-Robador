@@ -12,4 +12,5 @@ urlpatterns = [
     path('parametrosArticulares/',views.parametrosArticulares, name = "Parametros Articulares"),
     path('recibir_mensaje/', views.recibir_mensaje, name='recibir_mensaje'),
     path('obtener_mensaje/', views.obtener_mensaje, name='obtener_mensaje'),
+    path('esperar/', views.esperar, name='esperar'),
 ]

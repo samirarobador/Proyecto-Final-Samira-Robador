@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 import math
+import time
+
 
 # Create your views here.
 
@@ -74,3 +76,8 @@ def recibir_mensaje(request):
 
 def obtener_mensaje(request):
     return JsonResponse({'mensaje':ultimo_mensaje})
+
+def esperar(request):
+    # Espera 2 segundos
+    time.sleep(200)
+    return JsonResponse({'mensaje':"Espere 2 segundos"},status = 200)
