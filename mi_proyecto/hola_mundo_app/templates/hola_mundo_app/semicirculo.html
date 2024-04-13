@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Botones en forma de abanico en filas</title>
+<style>
+  /* Estilos para el cuerpo */
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+  }
+
+  /* Estilos para el contenedor de los botones */
+  .fan-container {
+    position: relative;
+    width: 300px; /* Ancho del contenedor */
+    height: 300px; /* Altura del contenedor */
+  }
+
+  /* Estilos para los botones */
+  .fan-button {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform-origin: bottom center;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  /* Ajustes de posición para los botones */
+  .fan-button:nth-child(1),
+  .fan-button:nth-child(2),
+  .fan-button:nth-child(3),
+  .fan-button:nth-child(4) {
+    transform: rotate(-75deg) translateY(150px) translateX(-50%);
+  }
+
+  .fan-button:nth-child(5),
+  .fan-button:nth-child(6),
+  .fan-button:nth-child(7),
+  .fan-button:nth-child(8) {
+    transform: rotate(-60deg) translateY(100px) translateX(-50%);
+  }
+
+  .fan-button:nth-child(9),
+  .fan-button:nth-child(10),
+  .fan-button:nth-child(11),
+  .fan-button:nth-child(12) {
+    transform: rotate(-45deg) translateY(50px) translateX(-50%);
+  }
+
+</style>
+</head>
+<body>
+<div class="fan-container">
+  <button class="fan-button">1</button>
+  <button class="fan-button">2</button>
+  <button class="fan-button">3</button>
+  <button class="fan-button">4</button>
+  <button class="fan-button">5</button>
+  <button class="fan-button">6</button>
+  <button class="fan-button">7</button>
+  <button class="fan-button">8</button>
+  <button class="fan-button">9</button>
+  <button class="fan-button">10</button>
+  <button class="fan-button">11</button>
+  <button class="fan-button">12</button>
+</div>
+</body>
+</html>

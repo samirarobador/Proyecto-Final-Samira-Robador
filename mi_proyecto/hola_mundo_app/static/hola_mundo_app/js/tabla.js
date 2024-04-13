@@ -61,7 +61,7 @@ function crearTabla() {
     var columnas = document.getElementById('columnas').value;
     var tablaDiv = document.getElementById('tabla');
     var tabla = '<table>';
-    var paso = 0.0215;
+    var paso = 0.021;
     var N = 6;
     for (var i = 0; i < filas; i++) {
         tabla += '<tr>';

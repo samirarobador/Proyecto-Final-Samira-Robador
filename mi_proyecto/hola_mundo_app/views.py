@@ -36,7 +36,7 @@ def parametrosArticulares(request):
         L1 = 0.1
         L2 = 0.12
         L3 = 0.116
-        L4 = 0.038
+        L4 = 0.055
         px = float(request.GET.get('px',''))
         py = float(request.GET.get('py',''))
         pz = float(request.GET.get('pz','')) - L1
@@ -49,18 +49,18 @@ def parametrosArticulares(request):
         # q4 = -(q3+q2)
         H = math.sqrt(pz**2+(math.sqrt(px**2+py**2)-L4)**2)
 
-        q1 = math.degrees(math.atan2(py, px))
+        q1 = int(math.degrees(math.atan2(py, px)))
         gamma = math.acos((H**2-L2**2-L3**2)/(-2*L2*L3))
         q3_radianes = math.pi - gamma
-        q3 = -math.degrees(q3_radianes)
+        q3 = int(-math.degrees(q3_radianes))
 
         alpha = math.atan2(pz,(math.sqrt(px**2+py**2)-L4))
         beta = math.asin((L3*math.sin(gamma))/H)
         beta2 = math.asin((L2*math.sin(gamma))/H)
         print("alpha: ",str(math.degrees(alpha)),"beta: ",str(math.degrees(beta)),"beta2: ",str(math.degrees(beta2)),"gamma: ",str(math.degrees(gamma)))
         q2_radianes = alpha+beta
-        q2 = math.degrees(q2_radianes)
-        q4 = -(q3+q2)
+        q2 = int(math.degrees(q2_radianes))
+        q4 = int(-(q3+q2))
 
         print(q2_radianes,q3_radianes)
         return JsonResponse({'q1':q1, 'q2':q2, 'q3':q3, 'q4':q4},status = 200)
