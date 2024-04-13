@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>Carga de Tubos</title>
+    <link rel="stylesheet" href="{% static 'hola_mundo_app/css/estiloGradilla.css' %}">
+</head>
+<body>
+    <div class="fan-container">
+        <!-- Repetimos tres veces para cada fila -->
+        <div class="row">
+          <!-- Repetimos nueve veces para cada botón en la fila -->
+          <div class="button"></div>
+          <div class="button"></div>
+          <div class="button"></div>
+          <div class="button"></div>
+          <div class="button"></div>
+          <div class="button"></div>
+          <div class="button"></div>
+          <div class="button"></div>
+          <div class="button"></div>
+        </div>
+        <div class="row">
+          <div class="button"></div>
+          <div class="button"></div>
+          <div class="button"></div>
+          <div class="button"></div>
+          <div class="button"></div>
+          <div class="button"></div>
+          <div class="button"></div>
+          <div class="button"></div>
+          <div class="button"></div>
+        </div>
+        <div class="row">
+          <div class="button"></div>
+          <div class="button"></div>
+          <div class="button"></div>
+          <div class="button"></div>
+          <div class="button"></div>
+          <div class="button"></div>
+          <div class="button"></div>
+          <div class="button"></div>
+          <div class="button"></div>
+        </div>
+      </div>
+      
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          const buttons = document.querySelectorAll('.button'); // Selecciona todos los botones
+      
+          buttons.forEach(button => {
+            button.addEventListener('click', function() {
+              // Alternar la clase 'clicked' al hacer clic
+              button.classList.toggle('clicked');
+            });
+          });
+        });
+      </script>
+</body>
+</html>
