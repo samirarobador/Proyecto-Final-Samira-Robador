@@ -1,0 +1,76 @@
+.fan-container {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    perspective: 1000px;  /* Aumentamos la perspectiva para un mejor efecto de profundidad */
+  }
+  
+  .row {
+    position: absolute;
+    width: 80%;
+    left: 10%;  /* Empieza en la columna 4 */
+    display: flex;
+    justify-content: center;  /* Ajustar según la distribución deseada */
+    align-items: center;
+    transform-origin: center bottom;
+    transform-style: preserve-3d; 
+  }
+  
+  /* Estilos específicos para cada fila con ajuste de top para separarlas */
+  .row:nth-child(1) {
+    top: 10%;  /* Más cerca al fondo */
+    transform: rotateX(10deg)  scaleY(.9); ;
+    justify-content: space-between; /* Máxima separación */
+    
+  }
+  
+  
+  .row:nth-child(2) {
+    top: 30%;  /* En el medio */
+    transform: rotateX(10deg)  scaleY(.9); ;
+    justify-content: space-around; /* Separación intermedia */
+  }
+  .row:nth-child(3) {
+    top: 50%;  /* Más cerca al top */
+    transform: rotateX(10deg)  scaleY(0.9); ;
+    justify-content: space-evenly; /* Menor separación */
+  }
+  
+  .button {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(65, 5, 90, 0.37); /* Modificar según el diseño */
+    border-radius: 50%;
+    transition: transform 0.3s;
+    cursor: pointer;
+    
+  }
+  
+  
+  
+  .row .button {
+    transform: translateY(calc(-130px * (1 - (var(--n) - 5) * (var(--n) - 5) / 15) + 100px))scale(2);
+  }
+  
+  /* Asignamos una variable CSS a cada botón para controlar su posición en la fila */
+  .row .button:nth-child(1) { --n: 1; }
+  .row .button:nth-child(2) { --n: 2; }
+  .row .button:nth-child(3) { --n: 3; }
+  .row .button:nth-child(4) { --n: 4; }
+  .row .button:nth-child(5) { --n: 5; }
+  .row .button:nth-child(6) { --n: 6; }
+  .row .button:nth-child(7) { --n: 7; }
+  .row .button:nth-child(8) { --n: 8; }
+  .row .button:nth-child(9) { --n: 9; }
+  
+  
+  
+  .button.clicked {
+    background-color: rgba(160, 1, 1, 0.9);; /* Nuevo color cuando se hace clic */
+  }
+  
+  .button:hover {
+    opacity: 0.5;/* Color más claro al pasar el mouse */
+  }
