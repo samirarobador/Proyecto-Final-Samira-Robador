@@ -7,7 +7,7 @@ function verificarCambio() {
         mensajeElement.innerText = data.mensaje;
 
         if(data.mensaje === "Dispositivo no Conectado"){
-            mensajeElement.style.backgroundColor = 'red';
+            mensajeElement.style.backgroundColor = '#e5502edf';
             mensajeElement.style.color = 'white';
         }else if(data.mensaje === "Dispositivo Conectado"){
             mensajeElement.style.backgroundColor = 'green';

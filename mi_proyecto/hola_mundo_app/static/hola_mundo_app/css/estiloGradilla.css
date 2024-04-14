@@ -1,76 +1,312 @@
 .fan-container {
     position: relative;
     width: 100%;
-    height: 400px;
+    height: 350px;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    perspective: 1000px;  /* Aumentamos la perspectiva para un mejor efecto de profundidad */
-  }
-  
-  .row {
+    perspective: 1000px;
+    /* Aumentamos la perspectiva para un mejor efecto de profundidad */
+}
+
+.fan-container-2 {
+    display: flex;
+    flex-direction: column; /* Orienta los hijos en una columna */
+    align-items: center; /* Alinea los hijos al centro horizontalmente */
+    justify-content: center; /* Centra los hijos verticalmente si hay espacio extra */
+    width: 100%; /* Asegura que ocupe el ancho completo del contenedor padre */
+    
+}
+
+.input-container {
+    display: flex;
+    justify-content: space-around; /* Centra los inputs horizontalmente */
+    margin-bottom: 20px; /* Espacio debajo del contenedor de inputs antes del botón */
+    align-items: flex-start;
+}
+
+#miConfirmacion {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.5); /* Color de fondo más claro */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Asegúrate de que esté sobre otros contenidos */
+}
+
+#miConfirmacion > div {
+    background-color: #ffffff; /* Fondo blanco para el cuadro de diálogo */
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    width: 300px; /* O el ancho que prefieras */
+}
+
+#miConfirmacion button {
+    margin: 10px;
+    padding: 5px 20px;
+    cursor: pointer;
+    background-color: #46137ac8; /* Green */
+    border: none;
+    color: white;
+    border-radius: 5px;
+    width: 100px; /* Anchura fija para los botones */
+}
+
+.button-container {
+    text-align: center; /* Centra los botones dentro del cuadro */
+}
+
+#noConexion {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.centrados {
+    text-align: center;  /* Centra el texto horizontalmente */
+    width: 100%;         /* Ocupa todo el ancho disponible (ajustable según necesidad) */
+    margin: auto;        /* Centra el bloque si tiene un ancho fijo */
+    display: block;      /* Asegura que el contenedor es tratado como un bloque */
+}
+
+#noConexion > div {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+#noConexion button {
+    margin-top: 10px;
+    padding: 5px 20px;
+    cursor: pointer;
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    border-radius: 5px;
+}
+
+
+.centered-button {
+
+    width: 200px;
+    height: 100px;
+    /* Padding generoso para aumentar el tamaño */
+    border-radius: 30%;
+    /* Hace el botón completamente circular */
+    background-color: #0870de91;
+    /* Color de fondo azul */
+    color: white;
+    /* Color de texto blanco */
+    border: none;
+    /* Sin borde */
+    cursor: pointer;
+    /* Cursor como puntero para indicar interactividad */
+    font-size: 20px;
+    /* Tamaño de fuente mayor para mejor legibilidad */
+    outline: none;
+    /* Elimina el contorno al hacer clic */
+    transition: background-color 0.3s, transform 0.3s;
+    /* Tra
+    
+    nsición suave para interacciones */
+}
+
+
+.centered-button:disabled {
+    background-color: #d8684f; /* Rojo */
+    color: #ccc;  /* Texto más claro para indicar que está deshabilitado */
+    cursor: not-allowed;  /* Cambia el cursor para indicar que no es clickable */
+    opacity: 0.5;
+}
+
+
+.centered-button:hover {
+    background-color: #0057b391;
+    /* Color más oscuro al pasar el ratón */
+    transform: scale(1.1);
+    /* Ligeramente más grande al pasar el ratón */
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;  /* Alinea los botones horizontalmente al centro */
+    gap: 10px;  /* Espacio entre los botones */
+}
+.row {
     position: absolute;
     width: 80%;
-    left: 10%;  /* Empieza en la columna 4 */
+    left: 10%;
+    /* Empieza en la columna 4 */
     display: flex;
-    justify-content: center;  /* Ajustar según la distribución deseada */
+    justify-content: center;
+    /* Ajustar según la distribución deseada */
     align-items: center;
     transform-origin: center bottom;
-    transform-style: preserve-3d; 
-  }
-  
-  /* Estilos específicos para cada fila con ajuste de top para separarlas */
-  .row:nth-child(1) {
-    top: 10%;  /* Más cerca al fondo */
-    transform: rotateX(10deg)  scaleY(.9); ;
-    justify-content: space-between; /* Máxima separación */
-    
-  }
-  
-  
-  .row:nth-child(2) {
-    top: 30%;  /* En el medio */
-    transform: rotateX(10deg)  scaleY(.9); ;
-    justify-content: space-around; /* Separación intermedia */
-  }
-  .row:nth-child(3) {
-    top: 50%;  /* Más cerca al top */
-    transform: rotateX(10deg)  scaleY(0.9); ;
-    justify-content: space-evenly; /* Menor separación */
-  }
-  
-  .button {
+    transform-style: preserve-3d;
+}
+
+.fila {
+    position: absolute;
+    width: 20%;
+    left: 40%;
+    /* Empieza en la columna 4 */
+    display: flex;
+    justify-content: center;
+    /* Ajustar según la distribución deseada */
+    align-items: center;
+    transform-origin: center bottom;
+    transform-style: preserve-3d;
+}
+
+/* Estilos específicos para cada fila con ajuste de top para separarlas */
+.row:nth-child(1) {
+    top: 10%;
+    /* Más cerca al fondo */
+    transform: rotateX(10deg) scaleY(.9);
+    ;
+    justify-content: space-between;
+    /* Máxima separación */
+
+}
+
+
+.row:nth-child(2) {
+    top: 30%;
+    /* En el medio */
+    transform: rotateX(10deg) scaleY(.9);
+    ;
+    justify-content: space-around;
+    /* Separación intermedia */
+}
+
+.row:nth-child(3) {
+    top: 50%;
+    /* Más cerca al top */
+    transform: rotateX(10deg) scaleY(0.9);
+    ;
+    justify-content: space-evenly;
+    /* Menor separación */
+}
+
+.button {
     width: 40px;
     height: 40px;
-    background-color: rgba(65, 5, 90, 0.37); /* Modificar según el diseño */
+    background-color: rgba(65, 5, 90, 0.37);
+    /* Modificar según el diseño */
     border-radius: 50%;
     transition: transform 0.3s;
     cursor: pointer;
+
+}
+
+.input-group-2 {
+    flex-direction: column;  /* Organiza los elementos internos en una columna */
     
-  }
-  
-  
-  
-  .row .button {
+    margin: -10px 0;  /* Espaciado vertical para separación */
+    display: flex;   /* Usar flexbox para alinear label e input */
+    align-items: center; /* Centra verticalmente el contenido de flexbox */
+}
+
+.input-group-2 label {
+    margin-right: 0px; /* Espacio entre la etiqueta y el input */
+}
+
+
+
+
+.input-group-2 input {
+    flex-grow: 1; /* Hace que el input crezca para ocupar el espacio disponible */
+    /* Padding para hacer el input más fácil de interactuar */
+    border: 1px solid #ccc; /* Bordes sutiles para el input */
+    text-align: center; 
+    font-size: 13px; /* Aumenta el tamaño del texto */
+    font-weight: bold; /* Hace el texto en negrita */
+}
+
+
+.page-title {
+    background-color: #8282f1; /* Un tono pastel suave */
+    width: 90%;  
+    
+    height: 40px;             /* Ahora ocupa solo el 80% del ancho de la página */
+    margin: 0 auto;           /* Centra el título horizontalmente con márgenes automáticos */
+    border-radius: 5%;        /* Bordes redondeados */
+            /* Padding vertical para más espacio */
+    text-align: center;       /* Centra el texto horizontalmente */
+    color: #ffffff;           /* Color del texto */
+    font-size: 2em;           /* Tamaño de la fuente */
+    font-family: 'Montserrat', sans-serif; /* Fuente Montserrat */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.6); /* Sombra para un efecto 3D */
+}
+html body {
+    background-color: #315b864e;
+}
+
+
+
+
+.row .button {
     transform: translateY(calc(-130px * (1 - (var(--n) - 5) * (var(--n) - 5) / 15) + 100px))scale(2);
-  }
-  
-  /* Asignamos una variable CSS a cada botón para controlar su posición en la fila */
-  .row .button:nth-child(1) { --n: 1; }
-  .row .button:nth-child(2) { --n: 2; }
-  .row .button:nth-child(3) { --n: 3; }
-  .row .button:nth-child(4) { --n: 4; }
-  .row .button:nth-child(5) { --n: 5; }
-  .row .button:nth-child(6) { --n: 6; }
-  .row .button:nth-child(7) { --n: 7; }
-  .row .button:nth-child(8) { --n: 8; }
-  .row .button:nth-child(9) { --n: 9; }
-  
-  
-  
-  .button.clicked {
-    background-color: rgba(160, 1, 1, 0.9);; /* Nuevo color cuando se hace clic */
-  }
-  
-  .button:hover {
-    opacity: 0.5;/* Color más claro al pasar el mouse */
-  }
+}
+
+/* Asignamos una variable CSS a cada botón para controlar su posición en la fila */
+.row .button:nth-child(1) {
+    --n: 1;
+}
+
+.row .button:nth-child(2) {
+    --n: 2;
+}
+
+.row .button:nth-child(3) {
+    --n: 3;
+}
+
+.row .button:nth-child(4) {
+    --n: 4;
+}
+
+.row .button:nth-child(5) {
+    --n: 5;
+}
+
+.row .button:nth-child(6) {
+    --n: 6;
+}
+
+.row .button:nth-child(7) {
+    --n: 7;
+}
+
+.row .button:nth-child(8) {
+    --n: 8;
+}
+
+.row .button:nth-child(9) {
+    --n: 9;
+}
+
+
+
+.button.clicked {
+    background-color: rgba(160, 1, 1, 0.9);
+    
+    /* Nuevo color cuando se hace clic */
+}
+
+.button:hover {
+    opacity: 0.5;
+    /* Color más claro al pasar el mouse */
+}

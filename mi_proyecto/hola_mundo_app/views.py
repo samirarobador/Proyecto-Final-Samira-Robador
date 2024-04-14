@@ -75,7 +75,7 @@ def recibir_mensaje(request):
     global ultimo_mensaje
     mensaje = request.GET.get('mensaje',"Dispositivo no conectado")
     ultimo_mensaje = mensaje
-    return JsonResponse({'status': 'Mensaje recibido'})
+    return JsonResponse({'status': 'Mensaje recibido'+mensaje})
 
 def obtener_mensaje(request):
     return JsonResponse({'mensaje':ultimo_mensaje})
