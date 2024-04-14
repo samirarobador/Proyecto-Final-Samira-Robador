@@ -4,58 +4,108 @@
     {% load static %}
     <meta charset="UTF-8">
     <title>Carga de Tubos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
     <link rel="stylesheet" href="{% static 'hola_mundo_app/css/estiloGradilla.css' %}">
+    <link rel="stylesheet" href="{% static 'hola_mundo_app/css/estiloTabla.css' %}">
 </head>
 <body>
+
+    <h1 class="page-title">Dosificador de Sustancias Químicas</h1>  <!-- Título de la página aquí -->
+    <h1 > </h1>
+
+
     <div class="fan-container">
         <!-- Repetimos tres veces para cada fila -->
         <div class="row">
-          <!-- Repetimos nueve veces para cada botón en la fila -->
-          <div class="button"></div>
-          <div class="button"></div>
-          <div class="button"></div>
-          <div class="button"></div>
-          <div class="button"></div>
-          <div class="button"></div>
-          <div class="button"></div>
-          <div class="button"></div>
-          <div class="button"></div>
+            <!-- Repetimos nueve veces para cada botón en la fila -->
+            <div class="button" id="81;.21"></div>
+            <div class="button" id="72;.21"></div>
+            <div class="button" id="63;.21"></div>
+            <div class="button" id="54;.21"></div>
+            <div class="button" id="45;.21"></div>
+            <div class="button" id="36;.21"></div>
+            <div class="button" id="27;.21"></div>
+            <div class="button" id="18;.21"></div>
+            <div class="button" id="9;.21"></div>
         </div>
         <div class="row">
-          <div class="button"></div>
-          <div class="button"></div>
-          <div class="button"></div>
-          <div class="button"></div>
-          <div class="button"></div>
-          <div class="button"></div>
-          <div class="button"></div>
-          <div class="button"></div>
-          <div class="button"></div>
+            <div class="button" id="81;.18"></div>
+            <div class="button" id="72;.18"></div>
+            <div class="button" id="63;.18"></div>
+            <div class="button" id="54;.18"></div>
+            <div class="button" id="45;.18"></div>
+            <div class="button" id="36;.18"></div>
+            <div class="button" id="27;.18"></div>
+            <div class="button" id="18;.18"></div>
+            <div class="button" id="9;.18"></div>
         </div>
         <div class="row">
-          <div class="button"></div>
-          <div class="button"></div>
-          <div class="button"></div>
-          <div class="button"></div>
-          <div class="button"></div>
-          <div class="button"></div>
-          <div class="button"></div>
-          <div class="button"></div>
-          <div class="button"></div>
+            <div class="button" id="81;.15"></div>
+            <div class="button" id="72;.15"></div>
+            <div class="button" id="63;.15"></div>
+            <div class="button" id="54;.15"></div>
+            <div class="button" id="45;.15"></div>
+            <div class="button" id="36;.15"></div>
+            <div class="button" id="27;.15"></div>
+            <div class="button" id="18;.15"></div>
+            <div class="button" id="9;.15"></div>
+
         </div>
-      </div>
-      
-      <script>
-        document.addEventListener('DOMContentLoaded', function() {
-          const buttons = document.querySelectorAll('.button'); // Selecciona todos los botones
-      
-          buttons.forEach(button => {
-            button.addEventListener('click', function() {
-              // Alternar la clase 'clicked' al hacer clic
-              button.classList.toggle('clicked');
-            });
-          });
-        });
-      </script>
+    </div>
+
+    <div class="fan-container-2">
+        <div class="input-container">
+            <div class="input-group-2">
+                <label for="altura">Altura gradilla (mm)</label>
+                <input type="number" id="altura" placeholder="En milimetros" value="170">
+            </div>
+            <div class="input-group-2">
+                <label for="mililitros">Cantidad Sustancia (ml)</label>
+                <input type="number" id="mililitros" placeholder="En mililitros" value="10">
+            </div>
+        </div>
+
+        <div class="button-container">
+            <button id="toggleListBtn" class="centered-button" disabled onclick="mostrarConfirmacion()">Cargar Gradilla</button>
+            <button id="resetButton" class="centered-button" disabled>Reiniciar Gradilla</button>
+        </div>
+        <div id="buttonListContainer" style="display: none;">
+            <h3>Botones Activos:</h3>
+            <ul id="buttonList"></ul>
+        </div>
+    </div>
+
+    <script src="{% static 'hola_mundo_app/js/gradilla.js' %}"></script>
+
+  
+        <div class="center">
+            <p id="mensaje">Dispositivo no Conectado</p>
+    </div>
+    <div id="miConfirmacion" style="display: none; position: fixed; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(255,255,255,0.5); justify-content: center; align-items: center;">
+        <div style="background-color: rgba(207, 174, 214, 0.813); padding: 20px; border-radius: 5px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); width: 300px;">
+            <p>¿Estás seguro de que quieres realizar esta acción?</p>
+            <div class="button-container">
+                <button onclick="confirmar()">Sí</button>
+                <button onclick="cancelar()">No</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ventana emergente de no conexión -->
+<div id="noConexion" style="display: none; position: fixed; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); justify-content: center; align-items: center;">
+    <div style="background-color: white; padding: 20px; border-radius: 5px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+        <div class="centrados">
+            <h1>⚠️</h1>
+            <p>No estás conectado al Robót.</p>
+        </div>
+        <div class="button-container">
+        <button onclick="cerrarNoConexion()">Aceptar</button>
+    </div>
+    </div>
+</div>
+
+    
 </body>
 </html>
