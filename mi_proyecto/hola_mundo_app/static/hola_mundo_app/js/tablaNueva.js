@@ -69,65 +69,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     */
 });
-document.addEventListener('DOMContentLoaded', function () {
-    const buttons = document.querySelectorAll('.button');
-    //const listContainer = document.getElementById('buttonList');
-    const resetButton = document.getElementById('resetButton');
-    const cargaGradillaButton = document.getElementById('toggleListBtn');
 
-    function updateButtonList() {
-        //listContainer.innerHTML = ''; // Limpiar la lista actual
-        let isAnyButtonClicked = false; // Para verificar si algún botón está 'clicked'
-        buttons.forEach(button => {
-            if (button.classList.contains('clicked')) {
-                isAnyButtonClicked = true;
-                const buttonId = button.id;
-                const listItem = document.createElement('li');
-                listItem.textContent = buttonId;
-                //listContainer.appendChild(listItem);
-                localStorage.setItem(`buttonPressed${buttonId}`, buttonId); // Almacenamos el ID del botón
-            } else {
-                const buttonId = button.id;
-                localStorage.removeItem(`buttonPressed${buttonId}`);
-            }
-        });
-
-        // Actualizar el botón de reinicio basado en si algún botón está 'clicked'
-        resetButton.disabled = !isAnyButtonClicked;
-        cargaGradillaButton.disabled = !isAnyButtonClicked;
-        if (isAnyButtonClicked) {
-            cargaGradillaButton.style.backgroundColor = "#03680691";
-            cargaGradillaButton.style.color = "";
-            resetButton.style.backgroundColor = ""; // Establecer color para activo, si es necesario
-            resetButton.style.color = ""; // Establecer color de texto para activo, si es necesario
-        } else {
-            resetButton.style.backgroundColor = "#d8684f"; // Rojo para inactivo
-            resetButton.style.color = "#ccc"; // Texto claro para inactivo
-            cargaGradillaButton.style.backgroundColor = "#d8684f";
-            cargaGradillaButton.style.color = "#ccc";
-        }
-    }
-
-    buttons.forEach(button => {
-        button.addEventListener('click', function () {
-            button.classList.toggle('clicked'); // Alterna la clase 'clicked'
-            updateButtonList(); // Verifica el estado de todos los botones y ajusta el botón de reinicio
-        });
-    });
-
-    resetButton.addEventListener('click', function () {
-        buttons.forEach(button => {
-            if (button.classList.contains('clicked')) {
-                button.classList.remove('clicked');
-                localStorage.removeItem(`buttonPressed${button.id}`);
-            }
-        });
-        updateButtonList(); // Verificar el estado después de resetear
-    });
-
-    // Inicializa la lista al cargar la página
-    updateButtonList();
-});
 
 /*
 document.getElementById('toggleListBtn').addEventListener('click', function() {
@@ -431,4 +373,61 @@ function mostrarCeldasPintadas() {
 function cambiarPagina() {
     console.log("cambiarPagina");
     window.location.href = '/inicio';
+}
+
+function purgarBomba(){
+    document.getElementById('purgado').style.display = 'flex';
+}
+
+
+function confirmarPurgado() {
+    console.log('El usuario dijo sí.');
+    //hacerAlgo();
+    let IP = document.getElementById('mensaje').innerText;
+    console.log(IP);
+
+    purgarBombaIniciar(IP);
+    document.getElementById('purgado').style.display = 'none';
+}
+
+function purgarBombaIniciar(IP){
+if(IP === "Dispositivo no Conectado"){
+    console.log("No conectado");
+    mostrarPurgando();
+    //mostrarNoConexion();
+}else{
+    mostrarPurgando();
+}
+}
+
+function mostrarPurgando() {
+    //acá debería mover el robot
+    document.getElementById('confirmacionPurgando').style.display = 'flex'; // Muestra la ventana emergente
+}
+
+function comenzar() {
+    document.getElementById('confirmacionPurgando').style.display = 'none'; // Oculta la ventana emergente
+    document.getElementById('loadingSpinner').style.display = 'block'; // Muestra el spinner
+
+    activarBomba().then(() => {
+        document.getElementById('loadingSpinner').style.display = 'none'; // Oculta el spinner una vez que activarBomba() ha terminado
+    }).catch(error => {
+        console.error('Error al activar la bomba:', error);
+        document.getElementById('loadingSpinner').style.display = 'none'; // Asegúrate de ocultar el spinner incluso si hay un error
+    });
+}
+
+function activarBomba() {
+    return new Promise((resolve, reject) => {
+        // Simula una operación asincrónica, como una solicitud HTTP
+        setTimeout(() => {
+            resolve();
+        }, 3000); // Simula un retraso de 3 segundos
+    });
+}
+
+function cancelarPurgado() {
+    console.log('El usuario dijo no.');
+    // Código opcional a ejecutar si el usuario dice "No"
+    document.getElementById('purgado').style.display = 'none';
 }

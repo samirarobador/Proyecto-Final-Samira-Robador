@@ -321,3 +321,63 @@ function cambiarPagina() {
     console.log("cambiarPagina");
     window.location.href = '/inicio';
 }
+
+
+function purgarBomba(){
+    document.getElementById('purgado').style.display = 'flex';
+}
+
+
+
+function confirmarPurgado() {
+    console.log('El usuario dijo sí.');
+    //hacerAlgo();
+    let IP = document.getElementById('mensaje').innerText;
+    console.log(IP);
+
+    purgarBombaIniciar(IP);
+    document.getElementById('purgado').style.display = 'none';
+}
+
+function purgarBombaIniciar(IP){
+if(IP === "Dispositivo no Conectado"){
+    console.log("No conectado");
+    mostrarPurgando();
+    //mostrarNoConexion();
+}else{
+    mostrarPurgando();
+}
+}
+
+function mostrarPurgando() {
+    //acá debería mover el robot
+    document.getElementById('confirmacionPurgando').style.display = 'flex'; // Muestra la ventana emergente
+}
+
+function comenzar() {
+    document.getElementById('confirmacionPurgando').style.display = 'none'; // Oculta la ventana emergente
+    document.getElementById('loadingSpinner').style.display = 'block'; // Muestra el spinner
+
+    activarBomba().then(() => {
+        document.getElementById('loadingSpinner').style.display = 'none'; // Oculta el spinner una vez que activarBomba() ha terminado
+    }).catch(error => {
+        console.error('Error al activar la bomba:', error);
+        document.getElementById('loadingSpinner').style.display = 'none'; // Asegúrate de ocultar el spinner incluso si hay un error
+    });
+}
+
+function activarBomba() {
+    return new Promise((resolve, reject) => {
+        // Simula una operación asincrónica, como una solicitud HTTP
+        setTimeout(() => {
+            resolve();
+        }, 3000); // Simula un retraso de 3 segundos
+    });
+}
+
+
+function cancelarPurgado() {
+    console.log('El usuario dijo no.');
+    // Código opcional a ejecutar si el usuario dice "No"
+    document.getElementById('purgado').style.display = 'none';
+}

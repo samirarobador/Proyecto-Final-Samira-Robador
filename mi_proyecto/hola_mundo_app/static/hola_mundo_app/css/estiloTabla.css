@@ -7,7 +7,7 @@ table {
     background-color: #8282f1; /* Un tono pastel suave */
     width: 90%;  
     
-    height: 40px;             /* Ahora ocupa solo el 80% del ancho de la página */
+    height: 50px;             /* Ahora ocupa solo el 80% del ancho de la página */
     margin: 0 auto;           /* Centra el título horizontalmente con márgenes automáticos */
     border-radius: 5%;        /* Bordes redondeados */
             /* Padding vertical para más espacio */
@@ -132,3 +132,52 @@ button:hover {
 
 
 
+.icon-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px; /* Tamaño aumentado */
+    height: 50px; /* Tamaño aumentado */
+    border-radius: 50%;
+    margin: 0 10px; /* Añade un poco de margen a los lados de los botones */
+}
+
+.icon-button img, .icon-button i {
+    height: 30px; /* Tamaño de la imagen o ícono */
+    width: auto;
+}
+
+.icon-button:hover {
+    background-color: rgba(0, 0, 0, 0.1); /* Efecto suave al pasar el ratón */
+}
+#loadingSpinner {
+    position: fixed; /* Fija el contenedor en la ventana */
+    top: 0;
+    left: 0;
+    right: 0;  /* Asegura que se extiende hacia el lado derecho */
+    bottom: 0; /* Asegura que se extiende hacia abajo */
+    width: 100%; /* Cubre todo el ancho de la ventana */
+    height: 100%; /* Cubre todo el alto de la ventana */
+    background-color: rgba(175, 146, 233, 0.5); /* Fondo semi-transparente negro */
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    z-index: 1000; /* Se asegura de que esté sobre otros elementos */
+}
+
+.spinner {
+    border: 25px solid #f3f3f3; /* Color más claro para el borde del spinner */
+    border-top: 25px solid #3498db; /* Color azul para la parte superior del spinner */
+    border-radius: 50%;
+    width: 100%; /* Tamaño del spinner */
+    height: 100%; /* Altura del spinner */
+    animation: spin 2s linear infinite; /* Animación giratoria */
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

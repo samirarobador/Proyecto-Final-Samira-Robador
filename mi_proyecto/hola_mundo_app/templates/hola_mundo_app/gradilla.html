@@ -15,18 +15,16 @@
 <body>
 
     <h1 class="page-title">
+        <button onclick="purgarBomba()" class="icon-button">
+            <img src="{% static 'hola_mundo_app/images/grifo-de-agua.png' %}" alt="Configuración">
+        </button>
         Dosificador de Sustancias Químicas Gradilla Polar
-        <button onclick="cambiarPagina()" style="background: none;
-        border: none;
-        cursor: pointer;
-        font-size: 20px; /* Aumenta el tamaño del ícono */
-        display: inline-flex;
-        width: 40px; /* Dimensiones más grandes */
-        height: 40px;
-        border-radius: 50%; /* Forma circular */">
-            <i class="fas fa-home"></i> <!-- Ícono de casa -->
+        <button onclick="cambiarPagina()" class="icon-button">
+            <img src="{% static 'hola_mundo_app/images/hogar.png' %}" alt="Menú Principal">
         </button>
     </h1>
+
+  
     <h1> </h1>
 
 
@@ -93,7 +91,6 @@
         </div>
     </div>
 
-    <script src="{% static 'hola_mundo_app/js/gradilla.js' %}"></script>
 
 
     <div class="center">
@@ -130,6 +127,44 @@
         </div>
     </div>
 
+
+
+    <div id="purgado"
+        style="display: none; position: fixed; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(255,255,255,0.5); justify-content: center; align-items: center;">
+        <div
+            style="background-color: rgba(207, 174, 214, 0.813); padding: 20px; border-radius: 5px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); width: 300px;">
+            <div class="centrados">
+                <p>¿Estás seguro de que quieres iniciar el proceso de purgado?</p>
+                <div class="button-container">
+                    <button onclick="confirmarPurgado()">Sí</button>
+                    <button onclick="cancelarPurgado()">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="confirmacionPurgando"
+        style="display: none; position: fixed; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(255,255,255,0.5); justify-content: center; align-items: center;">
+        <div
+            style="background-color: rgba(207, 174, 214, 0.813); padding: 20px; border-radius: 5px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); width: 300px;">
+            <div class="centrados">
+                <h1><i class="fas fa-cog"></i></h1>
+                <p>El robot se está posicionando en el Vaso de Purgado</p>
+                <p>Presiona Comenzar para inciar el Proceso </p>
+
+                <div class="button-container">
+                    <button onclick="comenzar()">Comenzar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="loadingSpinner" style="display: none;">
+        <div class="spinner"></div>
+    </div>
+
+    <script src="{% static 'hola_mundo_app/js/gradilla.js' %}"></script>
 
 </body>
 
