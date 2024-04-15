@@ -86,18 +86,18 @@ input[type="number"] {
     padding: 20px; /* Espacio alrededor de los botones */
     gap: 20px; /* Espacio entre los botones */
     align-items: center; /* Alinea verticalmente */
-    height: 100vh; /* Ocupa todo el viewport verticalmente para centrar todo el conjunto */
+     /* Ocupa todo el viewport verticalmente para centrar todo el conjunto */
     box-sizing: border-box; /* Asegura que el padding no afecte el ancho definido */
 }
 
 .boton-especifico {
-    width: 100px !important;
-    height: 800px !important;
-    background-color: #4CAF50 !important; /* Color de fondo verde */
+    width: 400px !important;
+    height: 400px !important;
+    background-color: #9b42cfb0 !important; /* Color de fondo verde */
     color: white !important; /* Color del texto blanco */
     border: none !important; /* Sin borde */
     border-radius: 10px !important; /* Bordes redondeados */
-    font-size: 16px !important; /* Tamaño del texto */
+    font-size: 36px !important; /* Tamaño del texto */
     cursor: pointer !important; /* Cursor en forma de mano */
     transition: background-color 0.3s, transform 0.3s; /* Transición para el fondo y la transformación */
     text-align: center; /* Centra el texto */

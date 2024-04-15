@@ -1,10 +1,28 @@
 table {
-    border: 1px solid rgb(102, 204, 7);
+    border: 1px solid rgba(65, 5, 90, 0.37);
     border-radius: 4px;
 }
 
+.page-title-nueva {
+    background-color: #8282f1; /* Un tono pastel suave */
+    width: 90%;  
+    
+    height: 40px;             /* Ahora ocupa solo el 80% del ancho de la página */
+    margin: 0 auto;           /* Centra el título horizontalmente con márgenes automáticos */
+    border-radius: 5%;        /* Bordes redondeados */
+            /* Padding vertical para más espacio */
+    text-align: center;       /* Centra el texto horizontalmente */
+    color: #ffffff;           /* Color del texto */
+    font-size: 2em;           /* Tamaño de la fuente */
+    font-family: 'Montserrat', sans-serif; /* Fuente Montserrat */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.6); /* Sombra para un efecto 3D */
+}
+html body {
+    background-color: #08498b4e;
+}
+
 th, td {
-    border: 1px solid rgb(119, 185, 56);
+    border: 1px solid rgba(65, 5, 90, 0.37);
     border-radius: 100px;
     cursor: pointer;
 }
@@ -15,16 +33,11 @@ td {
     vertical-align: middle;
 }
 .colored {
-    background-color: rgba(65, 248, 90, 0.637); /* Cambia este color al deseado */
+    background-color: rgba(160, 1, 1, 0.9); /* Cambia este color al deseado */
 }
 
 /* static/hola_mundo_app/css/estilo.css */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    margin: 0;
-    padding: 20px;
-}
+
 input[type="number"] {
     padding: 8px;
     margin: 5px;

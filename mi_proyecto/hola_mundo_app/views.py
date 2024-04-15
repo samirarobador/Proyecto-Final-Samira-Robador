@@ -10,12 +10,13 @@ def index(request):
     print("Entre")
     return render(request, 'hola_mundo_app/index.html')
 
+
 def gradilla(request):
     return render(request, 'hola_mundo_app/gradilla.html')
 
 def tabla(request):
     print("Entre")
-    return render(request, 'hola_mundo_app/tabla.html')
+    return render(request, 'hola_mundo_app/tablaNueva.html')
 
 def configurar(request):
     print("Entre a Configurar")

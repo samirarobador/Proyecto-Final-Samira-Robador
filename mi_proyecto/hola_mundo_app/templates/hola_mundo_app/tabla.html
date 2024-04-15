@@ -1,12 +1,20 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    {% load static %}
+    
     <meta charset="UTF-8">
     <title>Tabla</title>
-    <link rel="stylesheet" href="{% static 'hola_mundo_app/css/estiloTabla.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+   {% load static %}
+   <link rel="stylesheet" href="{% static 'hola_mundo_app/css/estiloTabla.css' %}">
+
 </head>
 <body>
+
+    <h1 class="page-title-nueva">Dosificador de Sustancias Químicas Gradilla LAC</h1> <!-- Título de la página aquí -->
+    <h1> </h1>
+
+
     <div class="container">
         <div class="left">
             <!-- Espacio para contenido adicional o vacío -->
@@ -24,11 +32,11 @@
 <button id="btnMoverRobot" style="display:none;" onclick="moverRobot()">Mover Robot</button>
 </div>
 <div> 
-<div id="tabla">aqui tabla</div>
+<div id="tabla"></div>
 <div id="celdasPintadas"></div>
 </div>
 </div>
-{% load static %}
+
 <script src="{% static 'hola_mundo_app/js/tabla.js' %}"></script>
 
 <div class="right">

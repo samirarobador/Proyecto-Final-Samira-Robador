@@ -14,7 +14,7 @@
     align-items: center; /* Alinea los hijos al centro horizontalmente */
     justify-content: center; /* Centra los hijos verticalmente si hay espacio extra */
     width: 100%; /* Asegura que ocupe el ancho completo del contenedor padre */
-    
+    margin-top: 20px;
 }
 
 .input-container {
@@ -31,11 +31,10 @@
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.5); /* Color de fondo más claro */
+    background-color: rgba(0,0,0,0.5);
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000; /* Asegúrate de que esté sobre otros contenidos */
 }
 
 #miConfirmacion > div {
@@ -57,9 +56,6 @@
     width: 100px; /* Anchura fija para los botones */
 }
 
-.button-container {
-    text-align: center; /* Centra los botones dentro del cuadro */
-}
 
 #noConexion {
     display: none;
@@ -81,27 +77,29 @@
 }
 
 #noConexion > div {
-    background-color: white;
+    background-color: #ffffff; /* Fondo blanco para el cuadro de diálogo */
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    width: 300px; /* O el ancho que prefieras */
 }
 
 #noConexion button {
-    margin-top: 10px;
+    margin: 10px;
     padding: 5px 20px;
     cursor: pointer;
-    background-color: #4CAF50; /* Green */
+    background-color: #46137ac8; /* Green */
     border: none;
     color: white;
     border-radius: 5px;
+    width: 100px; /* Anchura fija para los botones */
 }
 
 
 .centered-button {
 
     width: 200px;
-    height: 100px;
+    height: 50px;
     /* Padding generoso para aumentar el tamaño */
     border-radius: 30%;
     /* Hace el botón completamente circular */
@@ -252,6 +250,48 @@
 }
 html body {
     background-color: #315b864e;
+}
+
+.home-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px; /* Aumenta el tamaño del ícono */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px; /* Dimensiones más grandes */
+    height: 50px;
+    border-radius: 50%; /* Forma circular */
+    transition: box-shadow 0.3s, transform 0.3s;
+    position: relative; /* Para la posición del tooltip */
+}
+
+.home-button:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Sombra al pasar el ratón */
+    transform: scale(1.1); /* Aumenta ligeramente el tamaño al pasar el ratón */
+}
+
+.home-button:before {
+    content: "Ir a la pantalla principal"; /* Texto del tooltip */
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%); /* Centra el tooltip */
+    white-space: nowrap;
+    background-color: #333;
+    color: white;
+    padding: 5px 8px;
+    font-size: 12px;
+    border-radius: 4px;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.home-button:hover:before {
+    display: block;
+    opacity: 1; /* Muestra el tooltip al pasar el ratón */
 }
 
 

@@ -5,6 +5,7 @@
     {% load static %}
     <meta charset="UTF-8">
     <title>Carga de Tubos Polar</title>
+   
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
@@ -15,7 +16,7 @@
 <body>
 
     <h1 class="page-title">
-        Dosificador de Sustancias Químicas Gradilla Polar
+        Dosificador de Sustancias Químicas Gradilla Cuadricular
         <button onclick="cambiarPagina()" style="background: none;
         border: none;
         cursor: pointer;
@@ -30,45 +31,32 @@
     <h1> </h1>
 
 
-    <div class="fan-container">
-        <!-- Repetimos tres veces para cada fila -->
-        <div class="row">
-            <!-- Repetimos nueve veces para cada botón en la fila -->
-            <div class="button" id="81;.21"></div>
-            <div class="button" id="72;.21"></div>
-            <div class="button" id="63;.21"></div>
-            <div class="button" id="54;.21"></div>
-            <div class="button" id="45;.21"></div>
-            <div class="button" id="36;.21"></div>
-            <div class="button" id="27;.21"></div>
-            <div class="button" id="18;.21"></div>
-            <div class="button" id="9;.21"></div>
+    <div class="fan-container-2">
+        <div class="input-container">
+            <div class="input-group-2">
+                
+                <input type="number" id="filas" placeholder="Filas" value="4">
+                <label for="filas">Filas Gradilla</label>
+            </div>
+            <div class="input-group-2">
+                
+                <input type="number" id="columnas" placeholder="Columnas" value="6">
+                <label for="filas">Columnas Gradilla</label>
+            </div>
         </div>
-        <div class="row">
-            <div class="button" id="81;.18"></div>
-            <div class="button" id="72;.18"></div>
-            <div class="button" id="63;.18"></div>
-            <div class="button" id="54;.18"></div>
-            <div class="button" id="45;.18"></div>
-            <div class="button" id="36;.18"></div>
-            <div class="button" id="27;.18"></div>
-            <div class="button" id="18;.18"></div>
-            <div class="button" id="9;.18"></div>
-        </div>
-        <div class="row">
-            <div class="button" id="81;.15"></div>
-            <div class="button" id="72;.15"></div>
-            <div class="button" id="63;.15"></div>
-            <div class="button" id="54;.15"></div>
-            <div class="button" id="45;.15"></div>
-            <div class="button" id="36;.15"></div>
-            <div class="button" id="27;.15"></div>
-            <div class="button" id="18;.15"></div>
-            <div class="button" id="9;.15"></div>
-
+        <div class="button-container">
+            <button onclick="crearTabla()" class="centered-button">Crear Tabla</button>
+           
         </div>
     </div>
+    <h1> </h1>
+    <div class="fan-container-2">
 
+        <div id="tabla"></div>
+
+
+    </div>
+    <h1> </h1>
     <div class="fan-container-2">
         <div class="input-container">
             <div class="input-group-2">
@@ -84,8 +72,8 @@
         <div class="button-container">
             <button title="Haz clic para iniciar el proceso de Carga" id="toggleListBtn" class="centered-button"
                 disabled onclick="mostrarConfirmacion()">Cargar Gradilla</button>
-            <button title="Haz clic para reiniciar la selección de tubos en la Gradilla" id="resetButton"
-                class="centered-button" disabled>Reiniciar Gradilla</button>
+            <button title="Haz clic para reiniciar la selección de tubos en la Gradilla" id="resetButton2"
+                class="centered-button" disabled onclick="reiniciar()">Reiniciar Gradilla</button>
         </div>
         <div id="buttonListContainer" style="display: none;">
             <h3>Botones Activos:</h3>
@@ -93,7 +81,7 @@
         </div>
     </div>
 
-    <script src="{% static 'hola_mundo_app/js/gradilla.js' %}"></script>
+    <script src="{% static 'hola_mundo_app/js/tablaNueva.js' %}"></script>
 
 
     <div class="center">

@@ -148,7 +148,10 @@ function mostrarConfirmacion() {
 
 function confirmar() {
     console.log('El usuario dijo sí.');
-    hacerAlgo();
+    //hacerAlgo();
+    let IP = document.getElementById('mensaje').innerText;
+    console.log(IP);
+    moverRobot(IP);
     document.getElementById('miConfirmacion').style.display = 'none';
 }
 
@@ -215,56 +218,57 @@ function hacerAlgo() {
     }
 }
 
-function moverRobotCoordenada(px,py,pz,q1){
-   
-    const url = `/parametrosArticulares/?px=${px}&py=${py}&pz=${pz}`;
-    fetch(url)
-        .then(response => response.json())
-        .then(data => {            
-            console.log("Antes de llamar a mover robot parametros con coordenada");
-            moverRobotParametros(q1, data.q2, data.q3, data.q4);
-        })
-        .catch(error => console.error('Error:', error));
-}
+function moverRobot(IP) {
 
-function moverRobotParametros(q1,q2,q3,q4){
-    console.log("Moviendo el robot");
-    const myHeader = new Headers();
-    myHeader.append("Content-Type","application/x-www-form-urlencoded");
-    
-    const urlencoded = new URLSearchParams();
-    urlencoded.append("q1",String(q1));
-    urlencoded.append("q2",String(q2));
-    urlencoded.append("q3",String(q3));
-    urlencoded.append("q4",String(q4)); 
-
-    console.log("q1: "+q1);
-    console.log("q2: "+q2);
-    console.log("q3: "+q3);
-    console.log("q4: "+q4);
-/*
-    const requestOption = {
-        method : "POST",
-        headers:myHeader,
-        body: urlencoded,
-        redirect:"follow"
-    };
-    let IP = document.getElementById('mensaje').innerText;
-    let urlPegar = "http://"+IP+":80/todos";
-    console.log("Antes de fetch pepe");
-    console.log(urlPegar);
     if(IP === "Dispositivo no Conectado"){
-        console.log("No se mueve");
+        console.log("No conectado");
+        mostrarNoConexion();
     }else{
-        console.log("Entro a moverse");
-        console.log(urlPegar);
-    fetch(urlPegar,requestOption)
-    .then(response=>response.text())
-    .then(result => console.log(result))
-    .catch(error => console.error(error));
-    }*/
-}
 
+    var celdas = document.querySelectorAll('td');
+    var hayCeldasPintadas = false;
+    var cont = 0;
+    var valores;
+    var px;
+    var py;
+    var pz = document.getElementById('altura').value/1000.0;
+    var index = 0;
+
+    function iterar() {
+        if (index < celdas.length) {
+            var celda = celdas[index];
+
+            if (celda.classList.contains('colored')) {
+                 valores = celda.id.split(';');
+                 px = parseFloat(valores[0]);
+                 py = parseFloat(valores[1]);
+                celda.classList.remove('colored');
+                console.log("Moviendo a:");
+                console.log(px);
+                console.log(py);
+                console.log(pz);
+                moverRobotCoordenada(px, py, pz);
+                hayCeldasPintadas = true;
+
+                
+
+                
+                
+                setTimeout(bombaAgua, 1000);
+                index++; // Incrementar el índice para la siguiente iteración
+                setTimeout(iterar, 4000); // Esperar 2 segundos antes de la próxima iteración
+
+            } else {
+                index++; // Si la celda no está coloreada, pasar a la siguiente
+                iterar(); // Llamar a la función iterar sin esperar
+            }
+        }
+    }
+
+    iterar(); // Comenzar el bucle
+
+}
+}
 
 function bombaAgua(){
     const num1 = document.getElementById("mililitros").value;
@@ -291,7 +295,6 @@ function activarBombaDeAgua(ml){
         redirect:"follow"
     };
     let IP = document.getElementById('mensaje').innerText;
-    console.log(IP);
     let urlPegar = "http://"+IP+":80/bombaagua";
     console.log("Antes de fetch de bomba");
     console.log(urlPegar);
@@ -308,6 +311,52 @@ function activarBombaDeAgua(ml){
     }
 }
 
+function moverRobotCoordenada(px,py,pz){
+   
+    const url = `/parametrosArticulares/?px=${px}&py=${py}&pz=${pz}`;
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {            
+            console.log("Antes de llamar a mover robot parametros con coordenada");
+            moverRobotParametros(data.q1, data.q2, data.q3, data.q4);
+        })
+        .catch(error => console.error('Error:', error));
+}
+
+function moverRobotParametros(q1,q2,q3,q4){
+    console.log("Moviendo el robot");
+    const myHeader = new Headers();
+    myHeader.append("Content-Type","application/x-www-form-urlencoded");
+    
+    const urlencoded = new URLSearchParams();
+    urlencoded.append("q1",String(q1));
+    urlencoded.append("q2",String(q2));
+    urlencoded.append("q3",String(q3));
+    urlencoded.append("q4",String(q4)); 
+
+
+    const requestOption = {
+        method : "POST",
+        headers:myHeader,
+        body: urlencoded,
+        redirect:"follow"
+    };
+    let IP = document.getElementById('mensaje').innerText;
+    let urlPegar = "http://"+IP+":80/todos";
+    console.log("Antes de fetch pepe");
+    console.log(urlPegar);
+    if(IP === "Dispositivo no Conectado"){
+        console.log("No se mueve");
+    }else{
+        console.log("Entro a moverse");
+        console.log(urlPegar);
+    fetch(urlPegar,requestOption)
+    .then(response=>response.text())
+    .then(result => console.log(result))
+    .catch(error => console.error(error));
+    }
+}
+
 
 function mostrarNoConexion() {
     document.getElementById('noConexion').style.display = 'flex'; // Muestra la ventana emergente
@@ -315,6 +364,68 @@ function mostrarNoConexion() {
 
 function cerrarNoConexion() {
     document.getElementById('noConexion').style.display = 'none'; // Oculta la ventana emergente
+}
+
+
+function reiniciar(){
+    crearTabla();
+}
+
+function crearTabla() {
+    var filas = document.getElementById('filas').value;
+    var columnas = document.getElementById('columnas').value;
+    var tablaDiv = document.getElementById('tabla');
+    var tabla = '<table>';
+    var paso = 0.021;
+    var N = 6;
+    for (var i = 0; i < filas; i++) {
+        tabla += '<tr>';
+        for (var j = 0; j < columnas; j++) {
+
+            console.log(i, j);
+            tabla += `<td id="${0.11 + (N - i - 1) * paso};${(N - j - 3) * paso}" onclick="pintarCelda(this)">------------</td>`;
+        }
+        tabla += '</tr>';
+    }
+
+    tabla += '</table>';
+    console.log(tabla);
+    tablaDiv.innerHTML = tabla;
+
+
+
+ 
+    document.getElementById('toggleListBtn').disabled = false;
+
+    document.getElementById('resetButton2').disabled = false;
+
+
+    document.getElementById('toggleListBtn').style.backgroundColor = "#03680691";
+    document.getElementById('toggleListBtn').style.color = "#ccc";
+
+}
+
+function pintarCelda(celda) {
+    celda.classList.toggle('colored');
+}
+
+function mostrarCeldasPintadas() {
+    var celdas = document.querySelectorAll('td');
+    var hayCeldasPintadas = false;
+    var cont = 0;
+    celdas.forEach(function (celda, index) {
+        if (celda.classList.contains('colored')) {
+            //celdasPintadasInfo += celda.id.split('-') + ' ';
+            cont++;
+            hayCeldasPintadas = true;
+        }
+    });
+
+
+
+    //document.getElementById('celdasPintadas').innerText = celdasPintadasInfo;
+    //document.getElementById('btnMoverRobot').style.display = 'inline';
+    moverRobotCoordenada(0.08, 0,document.getElementById('altura').value/1000.0);
 }
 
 function cambiarPagina() {

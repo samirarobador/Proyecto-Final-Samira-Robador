@@ -4,49 +4,32 @@
         {% load static %}
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Suma de Números</title>
-        <link rel="stylesheet" href="{% static 'hola_mundo_app/css/estilo.css' %}">
+        <title>Menú Principal</title>
+        <link rel="stylesheet" href="{% static 'hola_mundo_app/css/estilo2.css' %}">
+        <link rel="stylesheet" href="{% static 'hola_mundo_app/css/estiloGradilla.css' %}">
     </head>
 <body>
+    <h1 class="page-title">Dosificador de Sustancias Químicas</h1> <!-- Título de la página aquí -->
+    <h1> </h1>
 
 <!-- index.html -->
-<div class="container">
-    <div class="left">
-        <!-- Espacio para contenido adicional o vacío -->
-    </div>
-    <div class="center">
-        <div class="input-group">
-            <label for="px">Px</label>
-            <input type="number" id="px" placeholder="Número 1">
-            
-            <label for="py">Py</label>
-            <input type="number" id="py" placeholder="Número 2">
-            
-            <label for="num3">Pz</label>
-            <input type="number" id="pz" placeholder="Número 3">
-        </div>
-        
-        <div class="center">
-        <button id="parametrosBtn">Calcular Parametros</button>
-        <p id="labelq1">q1</p>
-        <p id="labelq2">q2</p>
-        <p id="labelq3">q3</p>
-        <p id="labelq4">q4</p>
-    </div>
-       
-    </div>
-    <div class="right">
-        
-        <div class="center">
-        <p id="mensaje">Dispositivo no Conectado</p>
-        <label for="num4">Mililitros</label>
-        <input type="number" id="mililitros" placeholder="Mililitros">
-        <button id="btnBombaAgua">Activar Bomba de Agua</button>
-        <!-- Espacio para contenido adicional o vacío -->
-        <script src="{% static 'hola_mundo_app/js/scripts.js' %}"></script>
-    </div>
-    </div>
+<div class="botonera-especifica">
+    <button class="boton-especifico" onclick="gradillaPolar()">
+        <img src="{% static 'hola_mundo_app/images/brazo-robotico.png' %}" alt="Logo Gradilla Polar" style="height: 50%; width: auto;">
+        Gradilla Polar
+    </button>
+    <button class="boton-especifico" onclick="gradillaLAC()">
+        <img src="{% static 'hola_mundo_app/images/tubo-de-ensayo.png' %}" alt="Logo Gradilla LAC" style="height: 50%; width: auto;">
+        Gradilla Cuadricular
+    </button>
+
 </div>
+
+
+        <!-- Espacio para contenido adicional o vacío -->
+        <script src="{% static 'hola_mundo_app/js/scripmenu.js' %}"></script>
+   
+
 </body>
 </html>
 
