@@ -1,4 +1,4 @@
-# Arduino Configuration for Robotic Arm
+# Configuración de placa ESP32
 
 Este repositorio contiene el archivo de configuración `.ino` para la manipulación de un brazo robótico. Este script en particular se encarga de configurar y manejar el brazo robótico, conectarlo a la red Wi-Fi, y ajustar parámetros esenciales para su operación.
 
