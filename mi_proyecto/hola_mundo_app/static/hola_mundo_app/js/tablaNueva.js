@@ -94,6 +94,7 @@ function confirmar() {
     let IP = document.getElementById('mensaje').innerText;
     console.log(IP);
     moverRobot(IP);
+    moverRobotCoordenadas2(0.15, -0.05, 170/1000,0); 
     document.getElementById('miConfirmacion').style.display = 'none';
 }
 
@@ -260,12 +261,12 @@ function moverRobotCoordenada(px,py,pz){
         .then(response => response.json())
         .then(data => {            
             console.log("Antes de llamar a mover robot parametros con coordenada");
-            moverRobotParametros(data.q1, data.q2, data.q3, data.q4);
+            moverRobotParametros(data.q1, data.q2, data.q3, data.q4,15);
         })
         .catch(error => console.error('Error:', error));
 }
 
-function moverRobotParametros(q1,q2,q3,q4){
+function moverRobotParametros(q1,q2,q3,q4,tt){
     console.log("Moviendo el robot");
     const myHeader = new Headers();
     myHeader.append("Content-Type","application/x-www-form-urlencoded");
@@ -275,6 +276,8 @@ function moverRobotParametros(q1,q2,q3,q4){
     urlencoded.append("q2",String(q2));
     urlencoded.append("q3",String(q3));
     urlencoded.append("q4",String(q4)); 
+    
+    urlencoded.append("tt",String(tt));
 
 
     const requestOption = {
@@ -390,20 +393,32 @@ function confirmarPurgado() {
     document.getElementById('purgado').style.display = 'none';
 }
 
-function purgarBombaIniciar(IP){
-if(IP === "Dispositivo no Conectado"){
-    console.log("No conectado");
-    mostrarPurgando();
-    //mostrarNoConexion();
-}else{
-    mostrarPurgando();
-}
-}
 
-function mostrarPurgando() {
-    //acá debería mover el robot
-    document.getElementById('confirmacionPurgando').style.display = 'flex'; // Muestra la ventana emergente
+function moverRobotCoordenadas2(px,py,pz,q1){
+   
+    const url = `/parametrosArticulares/?px=${px}&py=${py}&pz=${pz}`;
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {            
+            console.log("Antes de llamar a mover robot parametros con coordenada");
+            moverRobotParametros(data.q1, data.q2, data.q3, data.q4,15);
+        })
+        .catch(error => console.error('Error:', error));
 }
+function purgarBombaIniciar(IP){
+    if(IP === "Dispositivo no Conectado"){
+        console.log("No conectado");
+       // mostrarPurgando();
+        mostrarNoConexion();
+    }else{
+        mostrarPurgando();
+    }
+    }
+    
+    function mostrarPurgando() {
+        moverRobotCoordenadas2(0.15, -0.05, 170/1000,0);
+        document.getElementById('confirmacionPurgando').style.display = 'flex'; // Muestra la ventana emergente
+    }
 
 function comenzar() {
     document.getElementById('confirmacionPurgando').style.display = 'none'; // Oculta la ventana emergente
@@ -418,13 +433,16 @@ function comenzar() {
 }
 
 function activarBomba() {
+    valor = 50;
+    activarBombaDeAgua(valor);
     return new Promise((resolve, reject) => {
         // Simula una operación asincrónica, como una solicitud HTTP
         setTimeout(() => {
             resolve();
-        }, 3000); // Simula un retraso de 3 segundos
+        }, valor * 720.0 / 10.0); // Simula un retraso de 3 segundos
     });
 }
+
 
 function cancelarPurgado() {
     console.log('El usuario dijo no.');
